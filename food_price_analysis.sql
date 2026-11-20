@@ -140,7 +140,6 @@ HAVING COUNT(CASE WHEN yr = 2020 THEN 1 END) >= 30
    AND COUNT(CASE WHEN yr = 2025 THEN 1 END) >= 30
 ORDER BY pct_change DESC;
 
--- Only foods with at least 30 observations in both years are compared.
 -- Q3: Do white maize prices differ between regions? Retail, 2025, regions with 3+ markets?
 SELECT
     admin1                      AS region,
@@ -159,6 +158,7 @@ ORDER BY avg_price_kg;
 
 -- Q4: How much higher is the retail price than the wholesale price for white maize?
 -- Method: matched pairs (same market, month and food), so years and markets are not mixed.
+--Covers 2006-2021, the only years that have both retail and wholesale data.
 SELECT
     COUNT(*)                                                              AS matched_pairs,
     COUNT(DISTINCT wholesale.market)                                      AS markets,
@@ -176,7 +176,7 @@ WHERE wholesale.pricetype = 'Wholesale'
 
 
 -- Q5: Which months had the biggest jumps in the white maize retail price?
--- I used  the window function LAG() to compare each month with the previous one. 2020 onward.
+-- Uses the window function LAG() to compare each month with the previous one. 2020 onward.
 
 WITH monthly AS (
     SELECT
