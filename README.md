@@ -20,7 +20,6 @@ I used SQL and Power BI to explore food prices across Ethiopia using data from t
 - Power Query – data preparation
 
 ### Files
--![Power BI Dashboard](dashboard.png)
 - [Power BI Dashboard](Ethiopia%20Food%20Prices.pbix)
 - [SQL Queries](food_price_analysis.sql)
 - [Original Dataset](wfp_food_prices_eth.csv)
